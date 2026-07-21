@@ -1,0 +1,494 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business, partners, pillars, stats, testimonials, nearby, nearbyIcons } from '../data/site';
+
+import heroImage from '../assets/images/hero/courtyard-golden-hour.png';
+import duskFeature from '../assets/images/hero/anchor-signpost-dusk.jpg';
+import kulterPillar from '../assets/images/kulter/kulter-03.jpg';
+import rendezvenyPillar from '../assets/images/rendezveny/rendezveny-01.jpg';
+import szallasPillar from '../assets/images/belter/szoba-01.jpg';
+import anchorMark from '../assets/images/logo/anchor-mark-white.png';
+import buffePhoto from '../assets/images/kornyek/kornyek-01.png';
+const pillarImages: Record<string, ImageMetadata> = {
+  szallas: szallasPillar,
+  rendezveny: rendezvenyPillar,
+  aktiv: kulterPillar
+};
+
+---
+
+<BaseLayout
+  title="Zátony Vendégház Tiszacsege | Szállás és rendezvényhelyszín"
+  description="Zátony Vendégház Tiszacsege — 23 fő, 7 önálló szoba, hangulatos udvar esküvőkhöz, szülinapokhoz és pihenéshez. Hívjon most: +36 30 899 0982."
+  path="/"
+  image="/src/assets/images/hero/courtyard-golden-hour.png"
+>
+  <section class="hero">
+    <Image src={heroImage} alt="Zátony Vendégház hangulatos, lámpafüzéres udvara alkonyatkor" class="hero-img" loading="eager" fetchpriority="high" widths={[640, 960, 1280, 1920, 2368]} sizes="100vw" />
+    <div class="hero-scrim"></div>
+    <div class="container hero-content">
+      <div class="hero-brandmark">
+        <Image src={anchorMark} alt="" class="hero-logo-mark" loading="eager" fetchpriority="high" width={140} height={140} aria-hidden="true" />
+        <p class="eyebrow eyebrow--light">Tiszacsege, a Tisza partján</p>
+      </div>
+      <h1>{business.tagline}</h1>
+      <p class="hero-sub">23 fő, 7 önálló szoba és egy saját udvar — a nyugodt pihenéstől a családi ünnepekig.</p>
+      <a class="btn btn-call btn-lg" href={business.phoneHref}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Hívjon most: {business.phone}</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section pillars reveal">
+    <div class="container">
+      <p class="eyebrow">Mit kínálunk</p>
+      <h2>Bárhogy is érkezik, mi ugyanúgy várjuk</h2>
+      <div class="pillar-grid reveal-stagger">
+        {pillars.map((pillar) => (
+          <a class="pillar-card card" href={pillar.href}>
+            <Image src={pillarImages[pillar.key]} alt="" width={520} height={380} loading="lazy" />
+            <div class="pillar-body">
+              <h3>{pillar.title}</h3>
+              <p>{pillar.description}</p>
+              <span class="pillar-link">{pillar.cta} →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div class="container stats-grid reveal-stagger">
+      {stats.map((stat) => (
+        <div class="stat">
+          <strong>{stat.value}</strong>
+          <span>{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section feature reveal">
+    <div class="container feature-grid">
+      <div class="feature-media">
+        <Image src={duskFeature} alt="A Zátony horgony-jelzés az udvaron, lámpafüzérekkel alkonyatkor" width={900} height={700} fit="cover" position="top" loading="lazy" />
+      </div>
+      <div class="feature-copy">
+        <p class="eyebrow">A hangulat</p>
+        <h2>Esti udvar, a horgony jegyében</h2>
+        <p class="lede">
+          Amikor lemegy a nap, a lugas alatt kigyulladnak a fények, a bogrács alatt pattog a tűz, és a horgony —
+          a Zátony jelképe — ott őrködik az udvar felett. Ez az, amiért visszatérnek a vendégeink.
+        </p>
+        <a class="btn btn-ghost" href="/rendezvenyek/">Az udvar rendezvényekhez →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section partner-banner reveal">
+    <div class="container partner-banner-grid">
+      <Image src={buffePhoto} alt="Tiszavirág Büfé kínálata" width={340} height={340} loading="lazy" />
+      <div class="partner-banner-copy">
+        <span class="partner-badge">Ajánlott partnerünk</span>
+        <h2>Tiszavirág Büfé</h2>
+        <p>Kedvenc helyi büfénk, amit szívesen ajánlunk vendégeinknek egy gyors falatra vagy egy egész rendezvény étkeztetésére.</p>
+        <div class="partner-banner-actions">
+          <a class="btn btn-ghost" href="/rendezvenyek/#etkezes">Bővebben az étkezésről →</a>
+          <a class="partner-phone-link" href={partners.tiszavirag.phoneHref}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand testimonials reveal">
+    <div class="container">
+      <p class="eyebrow">Vendégeink mondták</p>
+      <h2>Amiért újra visszatérnek</h2>
+      <div class="testimonial-row reveal-stagger">
+        {testimonials.map((item) => (
+          <figure class="testimonial-card card">
+            <blockquote>&bdquo;{item.quote}&rdquo;</blockquote>
+            <figcaption>— {item.name}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section nearby reveal">
+    <div class="container">
+      <p class="eyebrow">Tiszacsege és környéke</p>
+      <h2>Mit érdemes még csinálni itt?</h2>
+      <div class="nearby-grid reveal-stagger">
+        {nearby.map((item) => (
+          <div class="nearby-card">
+            <span class="nearby-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={nearbyIcons[item.title]}></path>
+              </svg>
+            </span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-ghost nearby-more" href="/programok/">Több program a környéken →</a>
+    </div>
+  </section>
+
+  <CtaBand secondaryLabel="Írjon nekünk">
+    Foglald le a <span class="highlight">Zátony Vendégházat</span> időben, nehogy lemaradj!
+  </CtaBand>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 8.3;
+    min-height: 28rem;
+    max-height: 44rem;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero :global(.hero-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 66%;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(70% 85% at 82% 12%, rgba(20, 16, 10, 0.22) 0%, rgba(20, 16, 10, 0) 55%),
+      linear-gradient(180deg, rgba(20, 16, 10, 0.05) 0%, rgba(20, 16, 10, 0.32) 45%, rgba(20, 16, 10, 0.88) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    padding-block: 3rem 3.5rem;
+    max-width: 44rem;
+  }
+
+  .hero-brandmark {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-brandmark :global(.hero-logo-mark) {
+    width: clamp(2.25rem, 2.5vw, 2.75rem);
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  }
+
+  .eyebrow--light {
+    color: var(--terracotta);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+  }
+
+  .hero h1 {
+    color: var(--white);
+    margin-block: 0.3em 0.4em;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.65);
+  }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 0.4vw + 1rem, 1.25rem);
+    color: rgba(255, 253, 249, 0.92);
+    max-width: 42ch;
+    margin-bottom: 1.8rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Pillars */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .pillar-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--ink);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .pillar-card :global(img) {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .pillar-body {
+    padding: 1.5rem;
+  }
+
+  .pillar-body p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .pillar-link {
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    font-size: 0.95rem;
+  }
+
+  /* Stats */
+  .stats-strip {
+    background: var(--ink);
+    color: var(--cream);
+    padding-block: 2.25rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1vw + 1.2rem, 2rem);
+    color: var(--terracotta);
+  }
+
+  .stat span {
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    opacity: 0.85;
+  }
+
+  /* Feature */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .feature-media :global(img) {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lift);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 7;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Partner banner */
+  .partner-banner-grid {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--white);
+    border: 1px solid var(--sand-line);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .partner-banner-grid :global(img) {
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .partner-banner-copy h2 {
+    margin: 0.2rem 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .partner-banner-copy p {
+    color: var(--ink-soft);
+    margin: 0 0 0.9rem;
+  }
+
+  .partner-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .partner-phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+    color: var(--terracotta-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .partner-phone-link svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+
+  .partner-badge {
+    display: inline-flex;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    background: var(--cream-deep);
+    padding: 0.3em 0.8em;
+    border-radius: 999px;
+  }
+
+  /* Testimonials */
+  .testimonial-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .testimonial-card {
+    padding: 1.75rem;
+    margin: 0;
+  }
+
+  .testimonial-card blockquote {
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .testimonial-card figcaption {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--terracotta-deep);
+  }
+
+  /* Nearby */
+  .nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .nearby-more {
+    margin-top: 2rem;
+  }
+
+  .nearby-card {
+    background: var(--white);
+    border: 1px solid var(--sand-line);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .nearby-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--cream-deep);
+    color: var(--terracotta-deep);
+    margin-bottom: 1rem;
+  }
+
+  .nearby-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .nearby-card h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .nearby-card p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partner-banner-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .feature-media {
+      order: -1;
+    }
+
+    .pillar-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 1.5rem;
+    }
+
+    .nearby-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      aspect-ratio: auto;
+      min-height: 100vh;
+      max-height: none;
+    }
+
+    .hero-content {
+      max-width: none;
+    }
+  }
+</style>

@@ -1,0 +1,328 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { business, eventTypes, partners } from '../../data/site';
+
+import tiszaviragBuffe from '../../assets/images/kornyek/kornyek-01.png';
+import heroImg from '../../assets/images/rendezveny/rendezveny-01.jpg';
+import hallPhoto2 from '../../assets/images/rendezveny/rendezveny-02.jpg';
+import hallPhoto3 from '../../assets/images/rendezveny/rendezveny-03.jpg';
+import hallPhoto4 from '../../assets/images/rendezveny/rendezveny-04.jpg';
+import hallPhoto5 from '../../assets/images/rendezveny/rendezveny-05.jpg';
+import hallPhoto6 from '../../assets/images/rendezveny/rendezveny-06.jpg';
+import courtyardEvening from '../../assets/images/hero/courtyard-dusk-2.jpg';
+
+const hallPhotos = [hallPhoto2, hallPhoto3, hallPhoto4, hallPhoto5, hallPhoto6];
+---
+
+<BaseLayout
+  title="Esküvő és rendezvény helyszín Tiszacsegén | Zátony Vendégház"
+  description="Kisebb esküvők, szülinapok és családi rendezvények otthona Tiszacsegén, a Hortobágy kapujában — rendezvényterem és hangulatos udvar. Kérjen ajánlatot: +36 30 899 0982."
+  path="/rendezvenyek/"
+  hidePartnerPopup
+>
+  <section class="page-hero">
+    <Image src={heroImg} alt="A rendezvényterem megterített hosszú asztalokkal" class="page-hero-img" loading="eager" fetchpriority="high" widths={[640, 960, 1280, 1920]} sizes="100vw" />
+    <div class="page-hero-scrim"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow eyebrow--light">Rendezvények</p>
+      <h1>Az Ön ünnepe, a mi udvarunkban</h1>
+      <p class="hero-sub">Esküvő, szülinap, családi összejövetel — a rendezvényterem és a lámpafüzéres udvar mindenre készen áll.</p>
+      <a class="btn btn-call btn-lg" href={business.phoneHref}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Kérjen ajánlatot: {business.phone}</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section event-types reveal">
+    <div class="container">
+      <p class="eyebrow">Mire alkalmas</p>
+      <h2>Bármilyen alkalomra otthonos helyszín</h2>
+      <div class="event-grid reveal-stagger">
+        {eventTypes.map((event) => (
+          <div class="event-card card">
+            <h3>{event.title}</h3>
+            <p>{event.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand hall reveal">
+    <div class="container">
+      <p class="eyebrow">A rendezvényterem</p>
+      <h2>Hely hosszú asztaloknak, jó hangulatnak</h2>
+      <p class="lede">Faszerkezetes tető, hosszú, megterített asztalok és egy praktikus, felszerelt konyha — minden adott egy emlékezetes estéhez.</p>
+      <div class="photo-grid reveal-stagger">
+        {hallPhotos.map((photo) => (
+          <Image src={photo} alt="A rendezvényterem berendezve" width={480} height={360} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section courtyard-events reveal">
+    <div class="container courtyard-grid">
+      <div class="courtyard-media">
+        <Image src={courtyardEvening} alt="Az udvar lámpafüzérekkel, rendezvényhez berendezve" width={900} height={700} loading="lazy" />
+      </div>
+      <div class="courtyard-copy">
+        <p class="eyebrow">Az udvar rendezvényekhez</p>
+        <h2>Ahol a vendégek estébe nyúlva maradnak</h2>
+        <p class="lede">
+          Tűzrakóhely, lámpafüzérek, hangulatos ülőhelyek — az udvar önmagában is dísz, nem kell mást hozzátenni,
+          csak a jó társaságot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="etkezes" class="section section--sand partner-section reveal">
+    <div class="container">
+      <p class="eyebrow">Étkezés</p>
+      <h2>Éhes lesz a társaság? Gondoskodtunk róla</h2>
+      <div class="partner-grid">
+        <div class="partner-card partner-card--featured">
+          <Image src={tiszaviragBuffe} alt="Tiszavirág Büfé kínálata" width={520} height={380} loading="lazy" />
+          <div class="partner-body">
+            <span class="partner-badge">Ajánlott partnerünk</span>
+            <h3>Tiszavirág Büfé</h3>
+            <p>Kedvenc helyi büfénk — igény esetén ide irányítjuk a vendégeinket egy gyors, finom falatra, vagy akár egy egész rendezvény étkeztetésére is.</p>
+            <a class="partner-phone-link" href={partners.tiszavirag.phoneHref}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
+            </a>
+          </div>
+        </div>
+        <div class="partner-card partner-card--simple">
+          <h3>Halászcsárda Tiszacsege</h3>
+          <p>A híres helyi halételek — korhelyhalászlé és társai — kedvelőinek ajánljuk, nagyobb társasággal érdemes asztalt foglalni előre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    image={courtyardEvening}
+    subtext="Írja meg a dátumot és a várható létszámot, vagy hívjon — mindkettő gyors választ kap."
+    primaryLabel={`Kérjen ajánlatot: ${business.phone}`}
+    secondaryLabel="Írásban kérek ajánlatot"
+  >
+    Kérjen ajánlatot a <span class="highlight">rendezvényére</span> még ma!
+  </CtaBand>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .page-hero :global(.page-hero-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 16, 10, 0.2) 0%, rgba(20, 16, 10, 0.85) 100%);
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding-block: 3rem 3.5rem;
+    max-width: 42rem;
+  }
+
+  .page-hero h1 {
+    color: var(--white);
+    margin-block: 0.3em 0.4em;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255, 253, 249, 0.92);
+    max-width: 40ch;
+    margin-bottom: 1.6rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .event-card {
+    padding: 1.75rem;
+  }
+
+  .event-card p {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .photo-grid :global(img) {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .courtyard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .courtyard-media :global(img) {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lift);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 7;
+    object-fit: cover;
+  }
+
+  .partner-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    align-items: stretch;
+  }
+
+  .partner-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .partner-card--featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--white);
+    border: 1px solid var(--sand-line);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .partner-card--featured :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .partner-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .partner-body h3 {
+    margin: 0;
+  }
+
+  .partner-body p {
+    color: var(--ink-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .partner-phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+    color: var(--terracotta-deep);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-top: 0.3rem;
+  }
+
+  .partner-phone-link svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+
+  .partner-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    background: var(--cream-deep);
+    padding: 0.3em 0.8em;
+    border-radius: 999px;
+  }
+
+  .partner-card--simple {
+    background: var(--white);
+    border: 1px solid var(--sand-line);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .partner-card--simple h3 {
+    margin: 0;
+  }
+
+  .partner-card--simple p {
+    color: var(--ink-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .event-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partner-grid,
+    .partner-card--featured {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .courtyard-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .courtyard-media {
+      order: -1;
+    }
+  }
+</style>

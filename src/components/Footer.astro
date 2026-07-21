@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { business, nav } from '../data/site';
+import logo from '../assets/images/logo/logo-primary.png';
+import anchorMark from '../assets/images/logo/anchor-mark-white.png';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <Image src={anchorMark} alt="" class="footer-anchor" loading="lazy" width={600} height={600} aria-hidden="true" />
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Image src={logo} alt="Zátony Vendégház" width={84} height={84} loading="lazy" />
+      <p class="footer-tagline">{business.tagline}</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Elérhetőség</h3>
+      <ul>
+        <li><a href={business.phoneHref}>{business.phone}</a></li>
+        <li><a href={`mailto:${business.email}`}>{business.email}</a></li>
+        <li><a href={business.mapsUrl} target="_blank" rel="noopener noreferrer">{business.address} · Útvonaltervezés</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Oldaltérkép</h3>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {year} Zátony Vendégház, Tiszacsege. Minden jog fenntartva.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--cream);
+    padding-block: clamp(3rem, 5vw, 4.5rem) 1.5rem;
+  }
+
+  .site-footer :global(.footer-anchor) {
+    position: absolute;
+    bottom: -12%;
+    left: -3%;
+    width: clamp(14rem, 20vw, 22rem);
+    height: auto;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .footer-grid,
+  .footer-bottom {
+    position: relative;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(248, 242, 232, 0.14);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-brand :global(img) {
+    border-radius: 999px;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--terracotta);
+    max-width: 26ch;
+    margin: 0;
+  }
+
+  .footer-col h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-col a {
+    text-decoration: none;
+    color: var(--cream);
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+  }
+
+  .footer-col a:hover {
+    opacity: 1;
+    color: var(--terracotta);
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    opacity: 0.65;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

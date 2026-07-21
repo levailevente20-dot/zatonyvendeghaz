@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zatonyvendeghaz.com/sitemap-index.xml

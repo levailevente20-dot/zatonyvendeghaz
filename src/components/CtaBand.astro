@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { business } from '../data/site';
+import defaultBg from '../assets/images/hero/courtyard-dusk-2.jpg';
+import anchorMark from '../assets/images/logo/anchor-mark-white.png';
+
+interface Props {
+  image?: ImageMetadata;
+  subtext?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  image = defaultBg,
+  subtext,
+  primaryLabel = `Hívjon most: ${business.phone}`,
+  secondaryHref = '/kapcsolat/',
+  secondaryLabel = 'Kapcsolat'
+} = Astro.props;
+---
+
+<section class="cta-band reveal">
+  <Image src={image} alt="" class="cta-band-img" loading="lazy" widths={[640, 1024, 1600, 1920]} sizes="100vw" />
+  <div class="cta-band-scrim"></div>
+  <Image src={anchorMark} alt="" class="cta-band-anchor" loading="lazy" width={520} height={520} aria-hidden="true" />
+  <div class="container cta-band-content">
+    <h2><slot /></h2>
+    {subtext && <p class="cta-band-sub">{subtext}</p>}
+    <div class="cta-actions">
+      <a class="btn btn-call btn-lg" href={business.phoneHref}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>{primaryLabel}</span>
+      </a>
+      <a class="btn btn-ghost cta-ghost" href={secondaryHref}>{secondaryLabel} →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 9vw, 7.5rem);
+    isolation: isolate;
+  }
+
+  .cta-band :global(.cta-band-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .cta-band-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(120% 140% at 50% 50%, rgba(15, 11, 6, 0.72) 0%, rgba(15, 11, 6, 0.55) 45%, rgba(15, 11, 6, 0.72) 100%),
+      linear-gradient(180deg, rgba(20, 15, 8, 0.45) 0%, rgba(20, 15, 8, 0.7) 100%);
+  }
+
+  .cta-band :global(.cta-band-anchor) {
+    position: absolute;
+    top: 50%;
+    right: clamp(-4rem, -2vw, -1rem);
+    transform: translateY(-50%);
+    width: clamp(16rem, 26vw, 26rem);
+    height: auto;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .cta-band-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+  }
+
+  .cta-band h2 {
+    color: var(--white);
+    max-width: 26ch;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(1.7rem, 1.6vw + 1.3rem, 2.6rem);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .cta-band h2 :global(.highlight) {
+    color: #f0bd8c;
+  }
+
+  .cta-band-sub {
+    color: rgba(255, 253, 249, 0.92);
+    max-width: 44ch;
+    margin: 0;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.6rem;
+  }
+
+  .cta-band .btn-call {
+    background: rgba(20, 15, 8, 0.82);
+    backdrop-filter: blur(4px);
+  }
+
+  .cta-band .btn-call:hover {
+    background: rgba(20, 15, 8, 0.95);
+  }
+
+  .cta-ghost {
+    color: var(--white);
+    border-color: rgba(255, 253, 249, 0.7);
+  }
+
+  .cta-ghost:hover {
+    background: rgba(255, 253, 249, 0.15);
+  }
+</style>

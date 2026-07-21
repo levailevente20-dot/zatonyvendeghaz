@@ -1,0 +1,232 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { business, roomAmenities } from '../../data/site';
+
+import heroImg from '../../assets/images/kulter/kulter-01.jpg';
+import szoba01 from '../../assets/images/belter/szoba-01.jpg';
+import szoba02 from '../../assets/images/belter/szoba-02.jpg';
+import szobaFurdo from '../../assets/images/belter/szoba-03.jpg';
+import szobaEtkezo from '../../assets/images/belter/szoba-04.jpg';
+import szoba05 from '../../assets/images/belter/szoba-05.jpg';
+import szobaKonyha from '../../assets/images/belter/szoba-06.jpg';
+
+import udvar01 from '../../assets/images/kulter/kulter-02.jpg';
+import udvar03 from '../../assets/images/kulter/kulter-05.jpg';
+import udvar04 from '../../assets/images/kulter/kulter-07.jpg';
+
+const roomPhotos = [
+  { image: szoba01, alt: 'Szoba a Zátony Vendégházban' },
+  { image: szoba02, alt: 'Szoba a Zátony Vendégházban' },
+  { image: szoba05, alt: 'Szoba a Zátony Vendégházban' },
+  { image: szobaFurdo, alt: 'Saját fürdőszoba minden szobában' },
+  { image: szobaEtkezo, alt: 'Közös étkező tér' },
+  { image: szobaKonyha, alt: 'Felszerelt közös konyha' }
+];
+const udvarPhotos = [udvar01, udvar03, udvar04];
+---
+
+<BaseLayout
+  title="Szállás Tiszacsegén | Zátony Vendégház — 23 fő, 7 szoba"
+  description="Családbarát szállás Tiszacsegén, a Tisza-tó közelében: 23 fő, 7 önálló szoba saját fürdővel, hangulatos udvarral. Hívjon most: +36 30 899 0982."
+  path="/szallas/"
+>
+  <section class="page-hero">
+    <Image src={heroImg} alt="A Zátony Vendégház udvara napközben" class="page-hero-img" loading="eager" fetchpriority="high" widths={[640, 960, 1280, 1920]} sizes="100vw" />
+    <div class="page-hero-scrim"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow eyebrow--light">Szállás</p>
+      <h1>23 fő, 7 önálló szoba, egy közös otthon</h1>
+      <p class="hero-sub">Mindenki elfér, mégis mindenkinek jut nyugalom — saját bejárat, saját fürdő, közös udvar.</p>
+      <a class="btn btn-call btn-lg" href={business.phoneHref}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Hívjon most: {business.phone}</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section amenities reveal">
+    <div class="container amenities-grid">
+      <div class="amenities-copy">
+        <p class="eyebrow">Mit kap minden szobában</p>
+        <h2>Kényelem, minden szobában ugyanúgy</h2>
+        <p class="lede">
+          A 7 szoba önállóan is bérelhető — mindegyik saját bejárattal, hogy a társaság együtt maradhasson, mégis
+          mindenki megtalálja a maga nyugalmát.
+        </p>
+      </div>
+      <ul class="amenity-list reveal-stagger">
+        {roomAmenities.map((item) => (
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--sand room-gallery reveal">
+    <div class="container">
+      <p class="eyebrow">Bepillantás</p>
+      <h2>Egyszerű, tiszta, praktikus</h2>
+      <div class="photo-grid reveal-stagger">
+        {roomPhotos.map((photo) => (
+          <Image src={photo.image} alt={photo.alt} width={480} height={360} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="udvar" class="section udvar-section reveal">
+    <div class="container udvar-grid">
+      <div class="udvar-copy">
+        <p class="eyebrow">A ház élménye</p>
+        <h2>Az igazi élmény az udvaron kezdődik</h2>
+        <p class="lede">
+          Nyugágyak a fák árnyékában, hinta a kert csendjében, csocsó és biliárd a fedett közösségi térben esténként —
+          a szállás nem ér véget a szoba ajtajánál.
+        </p>
+        <a class="btn btn-ghost" href="/galeria/">Több fotó a galériában →</a>
+      </div>
+      <div class="udvar-photos">
+        {udvarPhotos.map((photo) => (
+          <Image src={photo} alt="Az udvar élete napközben" width={420} height={420} loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand image={udvar01} secondaryLabel="Kérjen visszahívást">
+    Foglalja le <span class="highlight">szállását</span>, mielőtt lefoglalják mások!
+  </CtaBand>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .page-hero :global(.page-hero-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 16, 10, 0.15) 0%, rgba(20, 16, 10, 0.85) 100%);
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding-block: 3rem 3.5rem;
+    max-width: 42rem;
+  }
+
+  .page-hero h1 {
+    color: var(--white);
+    margin-block: 0.3em 0.4em;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255, 253, 249, 0.92);
+    max-width: 40ch;
+    margin-bottom: 1.6rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .amenity-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .amenity-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1.02rem;
+  }
+
+  .amenity-list svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    flex-shrink: 0;
+    color: var(--terracotta-deep);
+    margin-top: 0.15rem;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .photo-grid :global(img) {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .udvar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .udvar-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .udvar-photos :global(img:first-child) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .udvar-photos :global(img) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  @media (max-width: 900px) {
+    .amenities-grid,
+    .udvar-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
