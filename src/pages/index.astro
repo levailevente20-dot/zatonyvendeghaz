@@ -31,8 +31,8 @@ const pillarImages: Record<string, ImageMetadata> = {
     <div class="container hero-content">
       <div class="hero-brandmark">
         <Image src={anchorMark} alt="" class="hero-logo-mark" loading="eager" fetchpriority="high" width={140} height={140} aria-hidden="true" />
-        <p class="eyebrow eyebrow--light">Tiszacsege, a Tisza partján</p>
       </div>
+      <p class="eyebrow eyebrow--light">Tiszacsege, a Tisza partján</p>
       <h1>{business.tagline}</h1>
       <p class="hero-sub">23 fő, 7 önálló szoba és egy saját udvar — a nyugodt pihenéstől a családi ünnepekig.</p>
       <a class="btn btn-call btn-lg" href={business.phoneHref}>
@@ -216,7 +216,8 @@ const pillarImages: Record<string, ImageMetadata> = {
     min-height: 28rem;
     max-height: 44rem;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 
@@ -233,8 +234,8 @@ const pillarImages: Record<string, ImageMetadata> = {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(70% 85% at 82% 12%, rgba(20, 16, 10, 0.22) 0%, rgba(20, 16, 10, 0) 55%),
-      linear-gradient(180deg, rgba(20, 16, 10, 0.05) 0%, rgba(20, 16, 10, 0.32) 45%, rgba(20, 16, 10, 0.88) 100%);
+      radial-gradient(120% 130% at 50% 45%, rgba(15, 11, 6, 0.42) 0%, rgba(15, 11, 6, 0.3) 45%, rgba(15, 11, 6, 0.6) 100%),
+      linear-gradient(180deg, rgba(20, 16, 10, 0.28) 0%, rgba(20, 16, 10, 0.42) 50%, rgba(20, 16, 10, 0.75) 100%);
   }
 
   .hero-content {
@@ -243,24 +244,30 @@ const pillarImages: Record<string, ImageMetadata> = {
     color: var(--white);
     padding-block: 3rem 3.5rem;
     max-width: 44rem;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-brandmark {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .hero-brandmark :global(.hero-logo-mark) {
-    width: clamp(2.25rem, 2.5vw, 2.75rem);
+    width: clamp(3.5rem, 5vw, 4.5rem);
     height: auto;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+    padding: 0.6rem;
+    background: rgba(20, 16, 10, 0.4);
+    border-radius: 999px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   }
 
   .eyebrow--light {
     color: var(--terracotta);
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+    margin-bottom: 0.6rem;
   }
 
   .hero h1 {
@@ -273,6 +280,7 @@ const pillarImages: Record<string, ImageMetadata> = {
     font-size: clamp(1.05rem, 0.4vw + 1rem, 1.25rem);
     color: rgba(255, 253, 249, 0.92);
     max-width: 42ch;
+    margin-inline: auto;
     margin-bottom: 1.8rem;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   }
