@@ -20,24 +20,11 @@ function isActive(href: string) {
       </span>
     </a>
 
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
-    <label for="nav-toggle" class="nav-burger" aria-label="Menü megnyitása">
+    <button type="button" id="nav-burger-btn" class="nav-burger" aria-expanded="false" aria-controls="main-nav" aria-label="Menü megnyitása">
       <span></span>
       <span></span>
       <span></span>
-    </label>
-
-    <nav class="main-nav" aria-label="Fő navigáció">
-      <ul>
-        {nav.map((item) => (
-          <li>
-            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    </button>
 
     <a class="btn btn-call header-call" href={business.phoneHref}>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -48,6 +35,18 @@ function isActive(href: string) {
   </div>
 </header>
 
+<nav class="main-nav" id="main-nav" aria-label="Fő navigáció">
+  <ul>
+    {nav.map((item) => (
+      <li>
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
 <script>
   const header = document.querySelector('.site-header');
   if (header) {
@@ -56,6 +55,31 @@ function isActive(href: string) {
     };
     updateScrolled();
     window.addEventListener('scroll', updateScrolled, { passive: true });
+  }
+
+  const burgerBtn = document.getElementById('nav-burger-btn');
+  const mainNav = document.getElementById('main-nav');
+
+  if (burgerBtn && mainNav) {
+    const closeNav = () => {
+      mainNav.classList.remove('is-open');
+      burgerBtn.classList.remove('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      burgerBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mainNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
   }
 </script>
 
@@ -143,10 +167,6 @@ function isActive(href: string) {
     display: inline;
   }
 
-  .nav-toggle {
-    display: none;
-  }
-
   .nav-burger {
     display: none;
     flex-direction: column;
@@ -155,6 +175,8 @@ function isActive(href: string) {
     width: 40px;
     height: 40px;
     border-radius: var(--radius-sm);
+    border: none;
+    background: none;
     cursor: pointer;
   }
 
@@ -191,6 +213,7 @@ function isActive(href: string) {
       position: fixed;
       inset: 0;
       top: 68px;
+      z-index: 45;
       background: var(--cream);
       padding: 1.5rem;
       transform: translateY(-8px);
@@ -212,21 +235,21 @@ function isActive(href: string) {
       border-bottom: 1px solid var(--sand-line);
     }
 
-    .nav-toggle:checked ~ .main-nav {
+    .main-nav.is-open {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
 
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
+    .nav-burger.is-open span:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
 
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) {
+    .nav-burger.is-open span:nth-child(2) {
       opacity: 0;
     }
 
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) {
+    .nav-burger.is-open span:nth-child(3) {
       transform: translateY(-7px) rotate(-45deg);
     }
   }

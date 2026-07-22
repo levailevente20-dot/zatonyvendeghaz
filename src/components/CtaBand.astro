@@ -116,12 +116,12 @@ const {
   }
 
   .cta-band .btn-call {
-    background: rgba(20, 15, 8, 0.82);
-    backdrop-filter: blur(4px);
+    background: var(--terracotta-deep);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   }
 
   .cta-band .btn-call:hover {
-    background: rgba(20, 15, 8, 0.95);
+    background: var(--terracotta-deep-hover);
   }
 
   .cta-ghost {
@@ -131,5 +131,24 @@ const {
 
   .cta-ghost:hover {
     background: rgba(255, 253, 249, 0.15);
+  }
+
+  @media (max-width: 560px) {
+    .cta-band :global(.cta-band-anchor) {
+      right: 50%;
+      transform: translate(50%, -50%);
+      width: clamp(12rem, 60vw, 16rem);
+      opacity: 0.08;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .cta-actions .btn {
+      width: 100%;
+    }
   }
 </style>
