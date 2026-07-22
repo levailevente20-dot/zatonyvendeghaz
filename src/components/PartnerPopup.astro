@@ -1,27 +1,18 @@
 ---
 import { Image } from 'astro:assets';
-import { partners } from '../data/site';
 import buffePhoto from '../assets/images/kornyek/kornyek-01.png';
 ---
 
 <div class="partner-popup" id="partner-popup" hidden>
   <button class="partner-popup-close" id="partner-popup-close" aria-label="Bezárás">&times;</button>
-  <div class="partner-popup-body">
-    <a class="partner-popup-link" href="/rendezvenyek/#etkezes">
-      <Image src={buffePhoto} alt="Tiszavirág Büfé" width={80} height={80} loading="lazy" />
-      <span class="partner-popup-text">
-        <span class="partner-popup-badge">Ajánlott partnerünk</span>
-        <strong>Tiszavirág Büfé</strong>
-        <span class="partner-popup-sub">Bővebben →</span>
-      </span>
-    </a>
-    <a class="partner-popup-phone" href={partners.tiszavirag.phoneHref}>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-      </svg>
-      <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
-    </a>
-  </div>
+  <a class="partner-popup-body" href="/rendezvenyek/#etkezes">
+    <Image src={buffePhoto} alt="Tiszavirág Büfé" width={80} height={80} loading="lazy" />
+    <span class="partner-popup-text">
+      <span class="partner-popup-badge">Ajánlott partnerünk</span>
+      <strong>Tiszavirág Büfé</strong>
+      <span class="partner-popup-sub">Bővebben →</span>
+    </span>
+  </a>
 </div>
 
 <script>
@@ -87,41 +78,19 @@ import buffePhoto from '../assets/images/kornyek/kornyek-01.png';
   }
 
   .partner-popup-body {
-    padding: 0.9rem;
-  }
-
-  .partner-popup-link {
     display: flex;
     align-items: center;
     gap: 0.9rem;
+    padding: 0.9rem;
     text-decoration: none;
     color: var(--ink);
   }
 
-  .partner-popup-link :global(img) {
+  .partner-popup-body :global(img) {
     width: 3.6rem;
     height: 3.6rem;
     object-fit: cover;
     border-radius: var(--radius-sm);
-    flex-shrink: 0;
-  }
-
-  .partner-popup-phone {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.7rem;
-    padding-top: 0.7rem;
-    border-top: 1px solid var(--sand-line);
-    text-decoration: none;
-    color: var(--terracotta-deep);
-    font-weight: 600;
-    font-size: 0.88rem;
-  }
-
-  .partner-popup-phone svg {
-    width: 1.05rem;
-    height: 1.05rem;
     flex-shrink: 0;
   }
 

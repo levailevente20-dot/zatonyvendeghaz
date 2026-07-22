@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { business, partners, pillars, stats, testimonials, nearby, nearbyIcons } from '../data/site';
+import { business, pillars, stats, testimonials, nearby, nearbyIcons } from '../data/site';
 
 import heroImage from '../assets/images/hero/courtyard-golden-hour.png';
 import duskFeature from '../assets/images/hero/anchor-signpost-dusk.jpg';
@@ -98,15 +98,7 @@ const pillarImages: Record<string, ImageMetadata> = {
         <span class="partner-badge">Ajánlott partnerünk</span>
         <h2>Tiszavirág Büfé</h2>
         <p>Kedvenc helyi büfénk, amit szívesen ajánlunk vendégeinknek egy gyors falatra vagy egy egész rendezvény étkeztetésére.</p>
-        <div class="partner-banner-actions">
-          <a class="btn btn-ghost" href="/rendezvenyek/#etkezes">Bővebben az étkezésről →</a>
-          <a class="partner-phone-link" href={partners.tiszavirag.phoneHref}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
-          </a>
-        </div>
+        <a class="btn btn-ghost" href="/rendezvenyek/#etkezes">Bővebben az étkezésről →</a>
       </div>
     </div>
   </section>
@@ -344,27 +336,6 @@ const pillarImages: Record<string, ImageMetadata> = {
     margin: 0 0 0.9rem;
   }
 
-  .partner-banner-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-  }
-
-  .partner-phone-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    text-decoration: none;
-    color: var(--terracotta-deep);
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
-  .partner-phone-link svg {
-    width: 1.1em;
-    height: 1.1em;
-  }
 
   .partner-badge {
     display: inline-flex;

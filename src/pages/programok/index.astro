@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { business, nearby, nearbyIcons, partners } from '../../data/site';
+import { business, nearby, nearbyIcons } from '../../data/site';
 
 import heroImg from '../../assets/images/kornyek/termalstrand-medence.jpg';
 import termalstrand from '../../assets/images/kornyek/termalstrand-medence.jpg';
@@ -40,12 +40,6 @@ const photoByTitle: Record<string, ImageMetadata> = {
               <div class="gasztro-photo gasztro-photo--featured">
                 <span class="partner-badge">Ajánlott partnerünk</span>
                 <Image src={buffe} alt="Tiszavirág Büfé kínálata" width={360} height={560} loading="lazy" />
-                <a class="gasztro-phone" href={partners.tiszavirag.phoneHref}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
-                </a>
               </div>
               <div class="gasztro-photo">
                 <Image src={halaszcsarda} alt="Halászcsárda Tiszacsege kínálata" width={360} height={560} loading="lazy" />
@@ -174,31 +168,6 @@ const photoByTitle: Record<string, ImageMetadata> = {
     backdrop-filter: blur(3px);
     padding: 0.35em 0.7em;
     border-radius: 999px;
-  }
-
-  .gasztro-photo--featured .gasztro-phone {
-    position: absolute;
-    left: 0.6rem;
-    right: 0.6rem;
-    bottom: 0.6rem;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--white);
-    text-decoration: none;
-    background: rgba(43, 38, 32, 0.72);
-    backdrop-filter: blur(3px);
-    padding: 0.45em 0.7em;
-    border-radius: var(--radius-md);
-  }
-
-  .gasztro-photo--featured .gasztro-phone svg {
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
   }
 
   .program-icon-panel {

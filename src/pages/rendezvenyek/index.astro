@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { business, eventTypes, partners } from '../../data/site';
+import { business, eventTypes } from '../../data/site';
 
 import tiszaviragBuffe from '../../assets/images/kornyek/kornyek-01.png';
 import heroImg from '../../assets/images/rendezveny/rendezveny-01.jpg';
@@ -93,12 +93,6 @@ const hallPhotos = [hallPhoto2, hallPhoto3, hallPhoto4, hallPhoto5, hallPhoto6];
             <span class="partner-badge">Ajánlott partnerünk</span>
             <h3>Tiszavirág Büfé</h3>
             <p>Kedvenc helyi büfénk — igény esetén ide irányítjuk a vendégeinket egy gyors, finom falatra, vagy akár egy egész rendezvény étkeztetésére is.</p>
-            <a class="partner-phone-link" href={partners.tiszavirag.phoneHref}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span>Tiszavirág Büfé: {partners.tiszavirag.phone}</span>
-            </a>
           </div>
         </div>
         <div class="partner-card partner-card--simple">
@@ -252,22 +246,6 @@ const hallPhotos = [hallPhoto2, hallPhoto3, hallPhoto4, hallPhoto5, hallPhoto6];
     color: var(--ink-soft);
     margin: 0;
     font-size: 0.95rem;
-  }
-
-  .partner-phone-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    text-decoration: none;
-    color: var(--terracotta-deep);
-    font-weight: 600;
-    font-size: 0.92rem;
-    margin-top: 0.3rem;
-  }
-
-  .partner-phone-link svg {
-    width: 1.1em;
-    height: 1.1em;
   }
 
   .partner-badge {

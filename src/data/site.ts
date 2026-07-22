@@ -21,14 +21,6 @@ export const business = {
   lng: 21.0561
 };
 
-export const partners = {
-  tiszavirag: {
-    name: 'Tiszavirág Büfé',
-    phone: '06 20 945 9149',
-    phoneHref: 'tel:+36209459149'
-  }
-};
-
 export const nav = [
   { href: '/', label: 'Kezdőlap' },
   { href: '/szallas/', label: 'Szállás' },
