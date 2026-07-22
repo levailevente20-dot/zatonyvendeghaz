@@ -8,7 +8,8 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <Image src={anchorMark} alt="" class="footer-anchor" loading="lazy" width={600} height={600} aria-hidden="true" />
+  <Image src={anchorMark} alt="" class="footer-anchor footer-anchor--left" loading="lazy" width={600} height={600} aria-hidden="true" />
+  <Image src={anchorMark} alt="" class="footer-anchor footer-anchor--right" loading="lazy" width={600} height={600} aria-hidden="true" />
   <div class="container footer-grid">
     <div class="footer-brand">
       <Image src={logo} alt="Zátony Vendégház" width={84} height={84} loading="lazy" />
@@ -50,12 +51,21 @@ const year = new Date().getFullYear();
 
   .site-footer :global(.footer-anchor) {
     position: absolute;
-    bottom: -12%;
-    left: -3%;
-    width: clamp(14rem, 20vw, 22rem);
+    top: 50%;
+    width: clamp(9rem, 13vw, 14rem);
     height: auto;
-    opacity: 0.06;
+    opacity: 0.07;
     pointer-events: none;
+  }
+
+  .site-footer :global(.footer-anchor--left) {
+    left: clamp(1rem, 3vw, 3rem);
+    transform: translateY(-50%);
+  }
+
+  .site-footer :global(.footer-anchor--right) {
+    right: clamp(1rem, 3vw, 3rem);
+    transform: translateY(-50%) scaleX(-1);
   }
 
   .footer-grid,
@@ -132,9 +142,15 @@ const year = new Date().getFullYear();
       gap: 2rem;
     }
 
-    .site-footer :global(.footer-anchor) {
+    .site-footer :global(.footer-anchor--left) {
+      display: none;
+    }
+
+    .site-footer :global(.footer-anchor--right) {
       left: 50%;
-      bottom: -10%;
+      right: auto;
+      bottom: 1rem;
+      top: auto;
       transform: translateX(-50%);
       width: clamp(12rem, 55vw, 16rem);
     }

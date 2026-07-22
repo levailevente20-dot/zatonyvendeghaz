@@ -24,7 +24,8 @@ const {
 <section class="cta-band reveal">
   <Image src={image} alt="" class="cta-band-img" loading="lazy" widths={[640, 1024, 1600, 1920]} sizes="100vw" />
   <div class="cta-band-scrim"></div>
-  <Image src={anchorMark} alt="" class="cta-band-anchor" loading="lazy" width={520} height={520} aria-hidden="true" />
+  <Image src={anchorMark} alt="" class="cta-band-anchor cta-band-anchor--left" loading="lazy" width={520} height={520} aria-hidden="true" />
+  <Image src={anchorMark} alt="" class="cta-band-anchor cta-band-anchor--right" loading="lazy" width={520} height={520} aria-hidden="true" />
   <div class="container cta-band-content">
     <h2><slot /></h2>
     {subtext && <p class="cta-band-sub">{subtext}</p>}
@@ -69,13 +70,21 @@ const {
   .cta-band :global(.cta-band-anchor) {
     position: absolute;
     top: 50%;
-    right: clamp(-4rem, -2vw, -1rem);
-    transform: translateY(-50%);
-    width: clamp(16rem, 26vw, 26rem);
+    width: clamp(9rem, 13vw, 14rem);
     height: auto;
-    opacity: 0.1;
+    opacity: 0.12;
     z-index: -1;
     pointer-events: none;
+  }
+
+  .cta-band :global(.cta-band-anchor--left) {
+    left: clamp(1rem, 4vw, 4rem);
+    transform: translateY(-50%);
+  }
+
+  .cta-band :global(.cta-band-anchor--right) {
+    right: clamp(1rem, 4vw, 4rem);
+    transform: translateY(-50%) scaleX(-1);
   }
 
   .cta-band-content {
@@ -134,7 +143,11 @@ const {
   }
 
   @media (max-width: 560px) {
-    .cta-band :global(.cta-band-anchor) {
+    .cta-band :global(.cta-band-anchor--left) {
+      display: none;
+    }
+
+    .cta-band :global(.cta-band-anchor--right) {
       right: 50%;
       transform: translate(50%, -50%);
       width: clamp(12rem, 60vw, 16rem);
