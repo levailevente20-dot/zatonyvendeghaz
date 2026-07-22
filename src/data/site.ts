@@ -34,7 +34,7 @@ export const pillars = [
   {
     key: 'szallas',
     title: 'Szállás',
-    description: '23 fő, 7 önálló szoba — mindegyikben saját fürdő, TV, hűtő és Wi-Fi.',
+    description: '23 fő, 7 önálló szoba, mindegyikben saját fürdővel, TV-vel, hűtővel és Wi-Fivel.',
     href: '/szallas/',
     cta: 'A szobákról'
   },
@@ -48,7 +48,7 @@ export const pillars = [
   {
     key: 'aktiv',
     title: 'Aktív pihenés',
-    description: 'Grill, bogrács, hangulatos udvar — csocsó, biliárd és pingpong esténként.',
+    description: 'Grill, bogrács, hangulatos udvar, esténként csocsóval, biliárddal és pingponggal.',
     href: '/szallas/#udvar',
     cta: 'Az udvarról'
   }
@@ -64,7 +64,7 @@ export const stats = [
 export const testimonials = [
   {
     name: 'Andrea',
-    quote: 'Tiszta, rendezett szobák, kényelmes ágyak — pontosan azt kaptuk, amit vártunk.'
+    quote: 'Tiszta, rendezett szobák, kényelmes ágyak: pontosan azt kaptuk, amit vártunk.'
   },
   {
     name: 'Gábor',
@@ -76,11 +76,11 @@ export const testimonials = [
   },
   {
     name: 'Zoltán',
-    quote: 'Nagy társasággal érkeztünk, mégis mindenki kényelmesen elfért — remek ár-érték arány.'
+    quote: 'Nagy társasággal érkeztünk, mégis mindenki kényelmesen elfért. Remek ár-érték arány.'
   },
   {
     name: 'Nóra',
-    quote: 'Kedves fogadtatás, tiszta udvar, csendes környék — pont erre volt szükségünk.'
+    quote: 'Kedves fogadtatás, tiszta udvar, csendes környék: pont erre volt szükségünk.'
   }
 ];
 
@@ -113,7 +113,7 @@ export const eventTypes = [
   },
   {
     title: 'Családi / baráti összejövetel',
-    description: 'Bogrács, grill, hosszú asztalok — a nyári esték otthona.'
+    description: 'Bogrács, grill, hosszú asztalok: a nyári esték otthona.'
   }
 ];
 
@@ -122,16 +122,16 @@ export const nearby = [
     title: 'Tiszacsegei Termálstrand',
     distance: '5 perc autóval',
     description:
-      'Hat medencés gyógyfürdő a település szélén — két kültéri és két fedett termálmedence, úszó- és gyermekmedence.',
+      'Hat medencés gyógyfürdő a település szélén: két kültéri és két fedett termálmedence, uszoda és gyermekmedence.',
     long:
-      'A Tiszacsegei Termálstrand hat medencéje — két kültéri és két fedett termálmedence, egy úszó- és egy gyermekmedence — egész évben várja a feltöltődni vágyókat. Az oldott szerves anyagot tartalmazó, alkálihidrogén-karbonátos gyógyvíz kiválóan alkalmas izom- és reumatikus panaszok enyhítésére, úgyhogy egy aktívabb nap után tökéletes választás.',
+      'A Tiszacsegei Termálstrand hat medencéje (két kültéri és két fedett termálmedence, egy úszó- és egy gyermekmedence) egész évben várja a feltöltődni vágyókat. Az oldott szerves anyagot tartalmazó, alkálihidrogén-karbonátos gyógyvíz kiválóan alkalmas izom- és reumatikus panaszok enyhítésére, így egy aktívabb nap után is tökéletes választás.',
     hasPhoto: true
   },
   {
     title: 'Tisza vízitúra',
     distance: '2 perc a partig',
     description:
-      'Kajak, kenu vagy sétahajó a folyón — nyáron induló túrák ismertetik meg a vízparti világot.',
+      'Kajak, kenu vagy sétahajó a folyón: nyáron induló túrák ismertetik meg a vízparti világot.',
     long:
       'A Tisza egész nyáron ideális helyszín vízitúrákhoz: kajakkal vagy kenuval indulva, vagy egy kikötőből induló sétahajón is felfedezhető a folyó élővilága. A vendégházból két perc séta a folyópartig, így egy kora reggeli evezés simán belefér az utazás elé.',
     hasPhoto: false
@@ -142,16 +142,16 @@ export const nearby = [
     description:
       'A Hortobágyi Nemzeti Park madárparadicsoma és pusztai világa autóval negyedóra alatt elérhető.',
     long:
-      'A Hortobágyi Nemzeti Park — Magyarország első nemzeti parkja és UNESCO világörökségi helyszín — a puszta végtelen látképét, a kilenclyukú hidat és egy igazi madárparadicsomot kínál. Kocsival negyedóra alatt elérhető Tiszacsegéről, egy egész napos kirándulásra is bőven elég élményt tartogat.',
+      'A Hortobágyi Nemzeti Park, Magyarország első nemzeti parkja és UNESCO világörökségi helyszín, a puszta végtelen látképét, a kilenclyukú hidat és egy igazi madárparadicsomot kínálja. Kocsival negyedóra alatt elérhető Tiszacsegéről, és egy egész napos kiránduláshoz is bőven elég élményt tartogat.',
     hasPhoto: false
   },
   {
     title: 'Helyi gasztronómia',
     distance: 'a vendégházban és a közelben',
     description:
-      'A híres korhelyhalászlé és a helyi bográcsos ételek — kóstolja meg a Halászcsárda Tiszacsege és a Tiszavirág Büfé kínálatát.',
+      'A híres korhelyhalászlé és a helyi bográcsos ételek kedvelőinek ajánljuk a Halászcsárda Tiszacsege és a Tiszavirág Büfé kínálatát.',
     long:
-      'Tiszacsege híres a korhelyhalászléről, amelynek alapját a sok zöldség és a kétféle hal (ponty és keszeg) adja. A vendégházban saját bogrács és grill áll rendelkezésre, ha inkább magunk főznénk — vagy ha egy estére kikapcsolódnánk a konyhából, a közeli Halászcsárda Tiszacsege és a Tiszavirág Büfé kínálatát ajánljuk.',
+      'Tiszacsege híres a korhelyhalászléről, amelynek alapját a sok zöldség és a kétféle hal (ponty és keszeg) adja. A vendégházban saját bogrács és grill áll rendelkezésre, ha inkább magunk főznénk, vagy ha egy estére kikapcsolódnánk a konyhából, a közeli Halászcsárda Tiszacsege és a Tiszavirág Büfé kínálatát ajánljuk.',
     hasPhoto: true
   }
 ];

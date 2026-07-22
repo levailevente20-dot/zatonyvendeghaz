@@ -5,7 +5,7 @@ import { business, web3formsAccessKey } from '../../data/site';
 
 <BaseLayout
   title="Kapcsolat | Zátony Vendégház Tiszacsege"
-  description="Hívja a Zátony Vendégházat, vagy kérjen visszahívást — Tiszacsege, Zátony VIII. u. 21. Telefon: +36 30 899 0982."
+  description="Hívja a Zátony Vendégházat, vagy kérjen visszahívást. Tiszacsege, Zátony VIII. u. 21. Telefon: +36 30 899 0982."
   path="/kapcsolat/"
 >
   <section class="section contact-hero">
@@ -60,7 +60,7 @@ import { business, web3formsAccessKey } from '../../data/site';
 
         <form id="callback-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value={web3formsAccessKey} />
-          <input type="hidden" name="subject" value="Új visszahívás-kérés — Zátony Vendégház weboldal" />
+          <input type="hidden" name="subject" value="Új visszahívás-kérés (zatonyvendeghaz.com)" />
           <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
 
           <label>
@@ -119,10 +119,10 @@ import { business, web3formsAccessKey } from '../../data/site';
         status.textContent = 'Köszönjük! Hamarosan visszahívjuk.';
         form.reset();
       } else {
-        status.textContent = 'Hiba történt a küldés során — kérjük, hívjon minket telefonon.';
+        status.textContent = 'Hiba történt a küldés során, kérjük hívjon minket telefonon.';
       }
     } catch {
-      status.textContent = 'Hiba történt a küldés során — kérjük, hívjon minket telefonon.';
+      status.textContent = 'Hiba történt a küldés során, kérjük hívjon minket telefonon.';
     }
   });
 </script>
